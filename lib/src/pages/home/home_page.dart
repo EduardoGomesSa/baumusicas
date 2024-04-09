@@ -5,6 +5,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.yellow,);
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Todas as Músicas'),
+        backgroundColor: Colors.brown,
+      ),
+    );
   }
 }
