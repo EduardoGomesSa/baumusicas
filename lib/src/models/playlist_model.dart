@@ -1,13 +1,16 @@
-import 'package:baumusicas/src/models/music_model.dart';
-
 class PlaylistModel {
-  int? id;
-  String? name;
-  List<MusicModel>? musics;
+  int id;
+  String name;
 
   PlaylistModel({
-    this.id,
-    this.name,
-    this.musics,
+    required this.id,
+    required this.name,
   });
+
+  Map<String, dynamic> toMap(){
+    return {
+      'id': id,
+      'name': name,
+    };
+  }
 }
