@@ -1,3 +1,4 @@
+import 'package:baumusicas/src/bindings/playlist_binding.dart';
 import 'package:baumusicas/src/pages/base_page.dart';
 import 'package:baumusicas/src/pages/home/home_page.dart';
 import 'package:baumusicas/src/pages/playlist/playlist_page.dart';
@@ -7,7 +8,10 @@ abstract class AppRoute {
   static final pages = <GetPage>[
     GetPage(
       name: PageRoutes.home,
-      page: () => const HomePage(),
+      page: () => HomePage(),
+      bindings: [
+        PlaylistBinding(),
+      ]
     ),
     GetPage(
       name: PageRoutes.playlist,

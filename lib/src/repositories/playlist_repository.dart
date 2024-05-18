@@ -12,4 +12,16 @@ class PlaylistRepository {
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
+
+  Future<List<PlaylistModel>> get() async {
+    final db = await Db.connection();
+
+    final result = await db.query('playlists');
+
+    List<PlaylistModel> list;
+
+    list = PlaylistModel.fromList(result);
+
+    return Future.value(list);
+  }
 }

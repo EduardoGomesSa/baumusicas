@@ -19,15 +19,15 @@ class _BasePageState extends State<BasePage> {
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
-        children: const [
+        children: [
           HomePage(),
-          PlaylistPage(),
+          const PlaylistPage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: currentIndex,
-        onTap: (index){
+        onTap: (index) {
           setState(() {
             currentIndex = index;
             pageController.jumpToPage(index);
@@ -38,9 +38,7 @@ class _BasePageState extends State<BasePage> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Todas'),
           BottomNavigationBarItem(
-            icon: Icon(Icons.playlist_add),
-            label: 'Playlists'
-          )
+              icon: Icon(Icons.playlist_add), label: 'Playlists')
         ],
       ),
     );
