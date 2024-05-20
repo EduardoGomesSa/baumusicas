@@ -2,7 +2,7 @@ import 'package:baumusicas/src/models/playlist_model.dart';
 import 'package:baumusicas/src/repositories/playlist_repository.dart';
 import 'package:get/get.dart';
 
-class MusicController extends GetxController {
+class PlaylistController extends GetxController {
   final PlaylistRepository repository = PlaylistRepository();
 
   @override

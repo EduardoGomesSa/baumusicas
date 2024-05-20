@@ -1,4 +1,4 @@
-import 'package:baumusicas/src/controllers/music_controller.dart';
+import 'package:baumusicas/src/controllers/playlist_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,7 +7,7 @@ class HomePage extends StatelessWidget {
 
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
       GlobalKey<RefreshIndicatorState>();
-  final MusicController playlistController = Get.find();
+  final PlaylistController playlistController = Get.find();
 
   @override
   Widget build(BuildContext context) {
