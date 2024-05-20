@@ -1,9 +1,11 @@
 import 'package:baumusicas/src/models/playlist_model.dart';
+import 'package:baumusicas/src/repositories/music_repository.dart';
 import 'package:baumusicas/src/repositories/playlist_repository.dart';
 import 'package:get/get.dart';
 
 class PlaylistController extends GetxController {
   final PlaylistRepository repository = PlaylistRepository();
+  final MusicRepository repositoryMusic = MusicRepository();
 
   @override
   void onInit(){
@@ -12,6 +14,7 @@ class PlaylistController extends GetxController {
     create();
 
     getPlaylists();
+    repositoryMusic.get();
   }
 
   final playlistModel = PlaylistModel(id: 2, name: 'Rap Geek');
