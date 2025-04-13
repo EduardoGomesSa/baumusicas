@@ -5,6 +5,7 @@
 ## Tecnologias utilizadas:
 - Flutter
 - SQLite
+- Api do Youtube
 
 ## Configuração do ambiente:
 
@@ -18,4 +19,4 @@
 ```
 
 ### 
-🚧 Em desenvolvimento 🚧
+<p align="center">🚧 Em desenvolvimento 🚧</p>
