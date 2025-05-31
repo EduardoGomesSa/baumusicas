@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        //colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: false,
-      ),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+          useMaterial3: false,
+          bottomAppBarTheme: const BottomAppBarTheme(color: Colors.blue)),
       initialBinding: PlaylistBinding(),
       initialRoute: PageRoutes.base,
       getPages: AppRoute.pages,

@@ -8,7 +8,6 @@ class PlaylistPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Suas Playlists'),
-        backgroundColor: Colors.brown,
       ),
     );
   }

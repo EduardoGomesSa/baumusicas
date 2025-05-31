@@ -33,7 +33,7 @@ class _BasePageState extends State<BasePage> {
             pageController.jumpToPage(index);
           });
         },
-        backgroundColor: Colors.brown,
+        backgroundColor: Colors.blue[900],
         selectedItemColor: Colors.white,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Todas'),

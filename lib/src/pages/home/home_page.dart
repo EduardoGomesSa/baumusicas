@@ -14,7 +14,6 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Todas as Músicas'),
-        backgroundColor: Colors.brown,
       ),
       body: RefreshIndicator(
         key: _refreshIndicatorKey,
@@ -23,7 +22,7 @@ class HomePage extends StatelessWidget {
         },
         child: playlistController.listPlaylists.isNotEmpty
             ? ListView.builder(
-              itemCount: playlistController.listPlaylists.length,
+                itemCount: playlistController.listPlaylists.length,
                 itemBuilder: (ctx, index) => Text(
                     'nome da playlist: ${playlistController.listPlaylists[index].name}'),
               )
