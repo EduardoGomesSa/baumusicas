@@ -6,6 +6,8 @@
 - Flutter
 - SQLite
 - Api do Youtube
+- MVC
+- POO
 
 ## Configuração do ambiente:
 
