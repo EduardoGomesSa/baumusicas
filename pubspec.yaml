@@ -38,6 +38,8 @@ dependencies:
   get: ^4.6.5
   sqflite: ^2.3.3
   path: ^1.9.0
+  on_audio_query: ^2.9.0
+  permission_handler: ^11.3.1
 
 dev_dependencies:
   flutter_test:

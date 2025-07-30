@@ -1,3 +1,4 @@
+import 'package:baumusicas/src/bindings/music_binding.dart';
 import 'package:baumusicas/src/bindings/playlist_binding.dart';
 import 'package:baumusicas/src/routes/app_routes.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
           useMaterial3: false,
           bottomAppBarTheme: const BottomAppBarTheme(color: Colors.blue)),
-      initialBinding: PlaylistBinding(),
+      initialBinding: MusicBinding(),
       initialRoute: PageRoutes.base,
       getPages: AppRoute.pages,
     );
