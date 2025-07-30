@@ -9,6 +9,12 @@ class PlaylistPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Suas Playlists'),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.blueAccent,
+        child: const Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
