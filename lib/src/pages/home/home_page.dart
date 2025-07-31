@@ -29,8 +29,34 @@ class HomePage extends StatelessWidget {
             return ListTile(
               title: Text(song.title),
               subtitle: Text(song.artist ?? "Artista desconhecido"),
+              trailing: IconButton(
+                icon: const Icon(Icons.play_arrow),
+                onPressed: () => controller.playMusic(song),
+              ),
             );
           },
+        );
+      }),
+      bottomNavigationBar: Obx(() {
+        final song = controller.currentSong.value;
+        if (song == null) return const SizedBox.shrink();
+
+        return ListTile(
+          title: Text(song.title),
+          subtitle: Text(song.artist ?? ""),
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              IconButton(
+                onPressed: controller.pauseMusic,
+                icon: const Icon(Icons.pause),
+              ),
+              IconButton(
+                onPressed: controller.stopMusic,
+                icon: const Icon(Icons.stop),
+              ),
+            ],
+          ),
         );
       }),
     );
