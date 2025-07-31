@@ -1,13 +1,10 @@
 import 'package:baumusicas/src/controllers/music_controller.dart';
-import 'package:baumusicas/src/controllers/playlist_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
-  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
-      GlobalKey<RefreshIndicatorState>();
   final MusicController controller = Get.find();
 
   @override
