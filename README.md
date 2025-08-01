@@ -1,6 +1,6 @@
 # baumusicas
 ## Sobre:
-<p>Projeto sendo desenvolvido em Flutter para permitir ao usuário ouvir e organizar suas músicas salvas no dispositivo movél e também pesquisar no Youtube.</p>
+<p>Projeto sendo desenvolvido em Flutter para permitir ao usuário ouvir, organizar suas músicas salvas no dispositivo movél  em playlists e também pesquisar no Youtube.</p>
 
 ## Tecnologias utilizadas:
 - Flutter
