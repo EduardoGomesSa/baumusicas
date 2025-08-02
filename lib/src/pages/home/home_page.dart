@@ -21,19 +21,22 @@ class HomePage extends StatelessWidget {
         if (controller.musics.isEmpty) {
           return const Center(child: Text("Nenhuma música encontrada."));
         }
-
+        print("CORINTHIANS ==> ${controller.isPlaying}");
         return ListView.builder(
           itemCount: controller.musics.length,
           itemBuilder: (context, index) {
             final song = controller.musics[index];
             return ListTile(
-              title: Text(song.title),
-              subtitle: Text(song.artist ?? "Artista desconhecido"),
-              trailing: IconButton(
-                icon: const Icon(Icons.play_arrow),
-                onPressed: () => controller.playMusic(song),
-              ),
-            );
+                title: Text(song.title),
+                subtitle: Text(song.artist ?? "Artista desconhecido"),
+                trailing: Obx(() => IconButton(
+                      icon: Icon(controller.isPlaying.value
+                          ? Icons.pause
+                          : Icons.play_arrow),
+                      onPressed: () => controller.isPlaying.value
+                          ? controller.pauseMusic()
+                          : controller.playMusic(song),
+                    )));
           },
         );
       }),
@@ -49,12 +52,12 @@ class HomePage extends StatelessWidget {
             children: [
               IconButton(
                 onPressed: controller.pauseMusic,
-                icon: const Icon(Icons.pause),
+                icon: Icon(controller.isPlaying.value ? Icons.pause : Icons.play_arrow),
               ),
-              IconButton(
+              controller.isPlaying.value ? const SizedBox.shrink() : IconButton(
                 onPressed: controller.stopMusic,
                 icon: const Icon(Icons.stop),
-              ),
+              )
             ],
           ),
         );
