@@ -1,4 +1,5 @@
 import 'package:baumusicas/src/controllers/music_controller.dart';
+import 'package:baumusicas/src/pages/music/music_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -44,21 +45,31 @@ class HomePage extends StatelessWidget {
         final song = controller.currentSong.value;
         if (song == null) return const SizedBox.shrink();
 
-        return ListTile(
-          title: Text(song.title),
-          subtitle: Text(song.artist ?? ""),
-          trailing: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              IconButton(
-                onPressed: controller.pauseMusic,
-                icon: Icon(controller.isPlaying.value ? Icons.pause : Icons.play_arrow),
-              ),
-              controller.isPlaying.value ? const SizedBox.shrink() : IconButton(
-                onPressed: controller.stopMusic,
-                icon: const Icon(Icons.stop),
-              )
-            ],
+        return GestureDetector(
+          onTap: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const MusicPage()));
+          },
+          child: ListTile(
+            title: Text(song.title),
+            subtitle: Text(song.artist ?? ""),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                  onPressed: controller.pauseMusic,
+                  icon: Icon(controller.isPlaying.value
+                      ? Icons.pause
+                      : Icons.play_arrow),
+                ),
+                controller.isPlaying.value
+                    ? const SizedBox.shrink()
+                    : IconButton(
+                        onPressed: controller.stopMusic,
+                        icon: const Icon(Icons.stop),
+                      )
+              ],
+            ),
           ),
         );
       }),
