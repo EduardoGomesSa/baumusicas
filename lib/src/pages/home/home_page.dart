@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
                 title: Text(song.title),
                 subtitle: Text(song.artist ?? "Artista desconhecido"),
                 trailing: Obx(() => IconButton(
-                      icon: Icon(controller.isPlaying.value
+                      icon: Icon(controller.isPlaying.value && controller.currentSong.value == song
                           ? Icons.pause
                           : Icons.play_arrow),
                       onPressed: () => controller.isPlaying.value
