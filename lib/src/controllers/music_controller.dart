@@ -49,6 +49,15 @@ class MusicController extends GetxController {
     }
   }
 
+  void nextMusic() {
+    int nextIndex = currentIndex.value + 1;
+    if(nextIndex < musics.length){
+      playMusic(nextIndex);
+    } else {
+      print("Última música já está tocando.");
+    }
+  }
+
   void pauseMusic() {
     isPlaying.value = !isPlaying.value;
     player.pause();

@@ -49,10 +49,8 @@ class HomePage extends StatelessWidget {
         return GestureDetector(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => MusicPage(
-                      model: song,
-                      index: controller.currentIndex.value,
-                    )));
+                builder: (context) =>
+                    MusicPage(index: controller.currentIndex.value)));
           },
           child: ListTile(
             title: Text(song.title),
