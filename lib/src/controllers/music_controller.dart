@@ -34,7 +34,7 @@ class MusicController extends GetxController {
   }
 
   Future<void> playMusic(int index) async {
-    if(index < 0 || index >= musics.length) return;
+    if (index < 0 || index >= musics.length) return;
 
     final song = musics[index];
 
@@ -51,10 +51,19 @@ class MusicController extends GetxController {
 
   void nextMusic() {
     int nextIndex = currentIndex.value + 1;
-    if(nextIndex < musics.length){
+    if (nextIndex < musics.length) {
       playMusic(nextIndex);
     } else {
       print("Última música já está tocando.");
+    }
+  }
+
+  void previousMusic() {
+    final prevIndex = currentIndex.value - 1;
+    if (prevIndex >= 0) {
+      playMusic(prevIndex);
+    } else {
+      print("Primeira música já está tocando");
     }
   }
 

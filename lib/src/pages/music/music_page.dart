@@ -1,7 +1,6 @@
 import 'package:baumusicas/src/controllers/music_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:on_audio_query/on_audio_query.dart';
 
 class MusicPage extends StatelessWidget {
   const MusicPage({super.key, required this.index});
@@ -37,13 +36,15 @@ class MusicPage extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(song!.title),
+                Text(song.title),
                 Text(song.artist ?? "Artista Desconhecido"),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          controller.previousMusic();
+                        },
                         icon: const Icon(
                           Icons.skip_previous_rounded,
                           size: 50,
