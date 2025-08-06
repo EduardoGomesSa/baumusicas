@@ -1,13 +1,13 @@
 import 'package:baumusicas/src/controllers/music_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class MusicPage extends StatelessWidget {
-  const MusicPage({super.key, required this.model});
+  const MusicPage({super.key, required this.model, required this.index});
 
   final SongModel model;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class MusicPage extends StatelessWidget {
             child: Container(
               width: double.infinity,
               color: Colors.red,
-              child: Text("Imagem"),
+              child: const Text("Imagem"),
             ),
           ),
           Column(
@@ -45,7 +45,7 @@ class MusicPage extends StatelessWidget {
                         onPressed: () {
                           controller.isPlaying.value
                               ? controller.pauseMusic()
-                              : controller.playMusic(model);
+                              : controller.playMusic(index);
                         },
                         icon: Icon(
                           controller.isPlaying.value

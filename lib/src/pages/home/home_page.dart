@@ -31,12 +31,13 @@ class HomePage extends StatelessWidget {
                 title: Text(song.title),
                 subtitle: Text(song.artist ?? "Artista desconhecido"),
                 trailing: Obx(() => IconButton(
-                      icon: Icon(controller.isPlaying.value && controller.currentSong.value == song
+                      icon: Icon(controller.isPlaying.value &&
+                              controller.currentSong.value == song
                           ? Icons.pause
                           : Icons.play_arrow),
                       onPressed: () => controller.isPlaying.value
                           ? controller.pauseMusic()
-                          : controller.playMusic(song),
+                          : controller.playMusic(index),
                     )));
           },
         );
@@ -48,7 +49,10 @@ class HomePage extends StatelessWidget {
         return GestureDetector(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => MusicPage(model: song)));
+                builder: (context) => MusicPage(
+                      model: song,
+                      index: controller.currentIndex.value,
+                    )));
           },
           child: ListTile(
             title: Text(song.title),
