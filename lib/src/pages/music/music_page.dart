@@ -36,8 +36,20 @@ class MusicPage extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(song.title),
-                Text(song.artist ?? "Artista Desconhecido"),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15, bottom: 5, left: 10),
+                  child: Text(
+                    song.title,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10, bottom: 15),
+                  child: Text(song.artist ?? "Artista Desconhecido"),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
