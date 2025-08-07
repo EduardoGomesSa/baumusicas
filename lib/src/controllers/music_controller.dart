@@ -39,7 +39,7 @@ class MusicController extends GetxController {
     final song = musics[index];
 
     try {
-      isPlaying.value = !isPlaying.value;
+      isPlaying.value = true;
       currentSong.value = song;
       currentIndex.value = index;
       await player.setAudioSource(AudioSource.uri(Uri.parse(song.uri!)));
@@ -68,12 +68,12 @@ class MusicController extends GetxController {
   }
 
   void pauseMusic() {
-    isPlaying.value = !isPlaying.value;
+    isPlaying.value = false;
     player.pause();
   }
 
   void stopMusic() {
-    isPlaying.value = !isPlaying.value;
+    isPlaying.value = false;
     currentSong.value = null;
     player.stop();
   }

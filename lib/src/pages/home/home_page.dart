@@ -35,7 +35,8 @@ class HomePage extends StatelessWidget {
                               controller.currentSong.value == song
                           ? Icons.pause
                           : Icons.play_arrow),
-                      onPressed: () => controller.isPlaying.value
+                      onPressed: () => controller.isPlaying.value &&
+                              controller.currentIndex.value == index
                           ? controller.pauseMusic()
                           : controller.playMusic(index),
                     )));
