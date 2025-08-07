@@ -29,8 +29,18 @@ class MusicPage extends StatelessWidget {
               flex: 1,
               child: Container(
                 width: double.infinity,
-                color: Colors.red,
-                child: const Text("Imagem"),
+                color: Colors.grey.shade200,
+                child: const Center(
+                  child: SizedBox(
+                    height: double.infinity,
+                    width: double.infinity,
+                    child: Card(
+                        child: Icon(
+                      Icons.library_music,
+                      size: 120,
+                    )),
+                  ),
+                ),
               ),
             ),
             Column(
