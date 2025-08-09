@@ -36,19 +36,15 @@ class MusicPage extends StatelessWidget {
           children: [
             Expanded(
               flex: 1,
-              child: Container(
-                width: double.infinity,
-                color: Colors.grey.shade200,
-                child: Center(
-                  child: SizedBox(
-                    height: double.infinity,
-                    width: double.infinity,
-                    child: Card(
-                      child: MusicVisualizer(
-                        barCount: 30,
-                        colors: colors,
-                        duration: duration,
-                      ),
+              child: Center(
+                child: SizedBox(
+                  height: double.infinity,
+                  width: double.infinity,
+                  child: Card(
+                    child: MusicVisualizer(
+                      barCount: 30,
+                      colors: colors,
+                      duration: duration,
                     ),
                   ),
                 ),
