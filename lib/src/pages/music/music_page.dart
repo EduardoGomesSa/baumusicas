@@ -1,6 +1,7 @@
 import 'package:baumusicas/src/controllers/music_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:music_visualizer/music_visualizer.dart';
 
 class MusicPage extends StatelessWidget {
   const MusicPage({super.key, required this.index});
@@ -9,6 +10,14 @@ class MusicPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Color> colors = [
+      Colors.red[900]!,
+      Colors.green[900]!,
+      Colors.blue[900]!,
+      Colors.brown[900]!
+    ];
+
+    final List<int> duration = [900, 700, 600, 800, 500];
     final MusicController controller = Get.find();
     return Scaffold(
       appBar: AppBar(
@@ -30,15 +39,17 @@ class MusicPage extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 color: Colors.grey.shade200,
-                child: const Center(
+                child: Center(
                   child: SizedBox(
                     height: double.infinity,
                     width: double.infinity,
                     child: Card(
-                        child: Icon(
-                      Icons.library_music,
-                      size: 120,
-                    )),
+                      child: MusicVisualizer(
+                        barCount: 30,
+                        colors: colors,
+                        duration: duration,
+                      ),
+                    ),
                   ),
                 ),
               ),

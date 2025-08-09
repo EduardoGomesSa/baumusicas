@@ -208,6 +208,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.0"
+  music_visualizer:
+    dependency: "direct main"
+    description:
+      name: music_visualizer
+      sha256: d0eafdbe052021c7b2a2b3e1c87cc163e7262410a47246d570c568ad56935096
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.4"
   on_audio_query:
     dependency: "direct main"
     description:
