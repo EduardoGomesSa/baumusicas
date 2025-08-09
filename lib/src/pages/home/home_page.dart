@@ -22,7 +22,6 @@ class HomePage extends StatelessWidget {
         if (controller.musics.isEmpty) {
           return const Center(child: Text("Nenhuma música encontrada."));
         }
-        print("CORINTHIANS ==> ${controller.isPlaying}");
         return ListView.builder(
           itemCount: controller.musics.length,
           itemBuilder: (context, index) {
