@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: false,
           bottomAppBarTheme: const BottomAppBarTheme(color: Colors.blue)),
       initialBinding: MusicBinding(),
-      initialRoute: PageRoutes.base,
+      initialRoute: PageRoutes.splash,
       getPages: AppRoute.pages,
     );
   }
