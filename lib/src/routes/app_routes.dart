@@ -1,4 +1,3 @@
-import 'package:baumusicas/src/bindings/playlist_binding.dart';
 import 'package:baumusicas/src/pages/base_page.dart';
 import 'package:baumusicas/src/pages/home/home_page.dart';
 import 'package:baumusicas/src/pages/playlist/playlist_page.dart';

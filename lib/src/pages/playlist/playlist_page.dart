@@ -28,6 +28,7 @@ class PlaylistPage extends StatelessWidget {
             final playlist = controller.listPlaylists[index];
             return Card(
               child: ListTile(
+                leading: const Icon(Icons.playlist_play),
                 title: Text(playlist.name),
                 trailing: const Text("Total de músicas: 10"),
                 onTap: () {
