@@ -54,7 +54,7 @@ class MusicController extends GetxController {
     if (nextIndex < musics.length) {
       playMusic(nextIndex);
     } else {
-      print("Última música já está tocando.");
+      playMusic(0);
     }
   }
 
@@ -63,7 +63,7 @@ class MusicController extends GetxController {
     if (prevIndex >= 0) {
       playMusic(prevIndex);
     } else {
-      print("Primeira música já está tocando");
+      playMusic(musics.length - 1);
     }
   }
 
