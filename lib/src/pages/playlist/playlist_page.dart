@@ -1,4 +1,5 @@
 import 'package:baumusicas/src/controllers/playlist_controller.dart';
+import 'package:baumusicas/src/pages/playlist/playlist_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -32,7 +33,11 @@ class PlaylistPage extends StatelessWidget {
                 title: Text(playlist.name),
                 trailing: const Text("Total de músicas: 10"),
                 onTap: () {
-                  // Ação ao tocar na playlist
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const PlaylistDetailPage(),
+                    ),
+                  );
                 },
               ),
             );
