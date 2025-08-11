@@ -11,6 +11,7 @@ class MusicController extends GetxController {
   var isLoading = false.obs;
   var currentSong = Rxn<SongModel>();
   var isPlaying = false.obs;
+  var isPaused = false.obs;
   RxInt currentIndex = 0.obs;
 
   @override
@@ -36,10 +37,18 @@ class MusicController extends GetxController {
   Future<void> playMusic(int index) async {
     if (index < 0 || index >= musics.length) return;
 
+    if (isPaused.value) {
+      isPlaying.value = true;
+      isPaused.value = false;
+      await player.play();
+      return;
+    }
+
     final song = musics[index];
 
     try {
       isPlaying.value = true;
+      isPaused.value = false;
       currentSong.value = song;
       currentIndex.value = index;
       await player.setAudioSource(AudioSource.uri(Uri.parse(song.uri!)));
@@ -69,11 +78,13 @@ class MusicController extends GetxController {
 
   void pauseMusic() {
     isPlaying.value = false;
+    isPaused.value = true;
     player.pause();
   }
 
   void stopMusic() {
     isPlaying.value = false;
+    isPaused.value = false;
     currentSong.value = null;
     player.stop();
   }
