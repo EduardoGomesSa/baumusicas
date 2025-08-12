@@ -20,4 +20,32 @@ class MusicRepository {
 
     return songs;
   }
+
+  Future<SongModel> getByPath(String path) async {
+    var permission = await Permission.audio.request();
+
+    if (!permission.isGranted) {
+      throw Exception("Permissão negada para acessar arquivos de áudio.");
+    }
+
+    List<SongModel> songs = await _audioQuery.querySongs(
+        uriType: UriType.EXTERNAL, ignoreCase: true, path: path);
+
+    return songs.isNotEmpty
+        ? Future.value(songs.first)
+        : Future.error("Música não encontrada");
+  }
+
+  // getAllByPath(String path) async {
+  //   var permission = await Permission.audio.request();
+
+  //   if (!permission.isGranted) {
+  //     throw Exception("Permissão negada para acessar arquivos de áudio.");
+  //   }
+
+  //   List<SongModel> songs = await _audioQuery.querySongs(
+  //       uriType: UriType.EXTERNAL, ignoreCase: true, path: path);
+
+  //   return Future.value(songs);
+  // }
 }
