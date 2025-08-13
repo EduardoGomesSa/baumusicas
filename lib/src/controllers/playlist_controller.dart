@@ -17,7 +17,7 @@ class PlaylistController extends GetxController {
   var isLoading = false.obs;
 
   void create() async {
-    await repository.insert(playlistModel.value);
+    await repository.create(playlistModel.value);
   }
 
   Future getPlaylists() async {
