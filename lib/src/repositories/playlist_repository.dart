@@ -6,13 +6,27 @@ class PlaylistRepository {
   Future<bool> insert(PlaylistModel model) async {
     final db = await Db.connection();
 
-    var result = await db.insert(
+    var playlistId = await db.insert(
       'playlists',
       model.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
 
-    return result > 0;
+    if (model.musics != null && model.musics!.isNotEmpty) {
+      for (var music in model.musics!) {
+        await db.insert(
+          'musics',
+          {
+            'title': music.name,
+            'artist': music.address,
+            'playlist_id': playlistId,
+          },
+          conflictAlgorithm: ConflictAlgorithm.replace,
+        );
+      }
+    }
+
+    return playlistId > 0;
   }
 
   Future<List<PlaylistModel>> get() async {
