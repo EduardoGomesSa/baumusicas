@@ -3,14 +3,16 @@ import 'package:baumusicas/src/models/playlist_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 class PlaylistRepository {
-  Future<void> insert(PlaylistModel model) async {
+  Future<bool> insert(PlaylistModel model) async {
     final db = await Db.connection();
 
-    await db.insert(
+    var result = await db.insert(
       'playlists',
       model.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+
+    return result > 0;
   }
 
   Future<List<PlaylistModel>> get() async {

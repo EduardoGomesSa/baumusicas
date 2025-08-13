@@ -30,7 +30,7 @@ class PlaylistPage extends StatelessWidget {
             return Card(
               child: ListTile(
                 leading: const Icon(Icons.playlist_play),
-                title: Text(playlist.name),
+                title: Text(playlist.name!),
                 trailing: const Text("Total de músicas: 10"),
                 onTap: () {
                   Navigator.of(context).push(

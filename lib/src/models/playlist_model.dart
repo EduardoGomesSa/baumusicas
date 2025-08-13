@@ -1,19 +1,21 @@
 import 'package:baumusicas/src/models/music_model.dart';
 
 class PlaylistModel {
-  int id;
-  String name;
-  List<MusicModel> musics = [];
+  int? id;
+  String? name;
+  List<MusicModel>? musics = [];
 
   PlaylistModel({
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
+    this.musics,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'name': name,
+      'musics': musics?.map((e) => e.toMap()).toList(),
     };
   }
 
@@ -21,6 +23,10 @@ class PlaylistModel {
     return PlaylistModel(
       id: map['id'],
       name: map['name'],
+      musics: map['musics'] != null
+          ? List<MusicModel>.from(
+              map['musics']?.map((x) => MusicModel.fromMap(x)))
+          : [],
     );
   }
 

@@ -6,20 +6,18 @@ class PlaylistController extends GetxController {
   final PlaylistRepository repository = PlaylistRepository();
 
   @override
-  void onInit(){
+  void onInit() {
     super.onInit();
-
-    // create();
 
     getPlaylists();
   }
 
-  final playlistModel = PlaylistModel(id: 2, name: 'Rap Geek');
+  Rx<PlaylistModel> playlistModel = PlaylistModel().obs;
   RxList<PlaylistModel> listPlaylists = RxList<PlaylistModel>([]);
   var isLoading = false.obs;
 
   void create() async {
-    await repository.insert(playlistModel);
+    await repository.insert(playlistModel.value);
   }
 
   Future getPlaylists() async {
