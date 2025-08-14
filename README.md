@@ -2,6 +2,13 @@
 ## Sobre:
 <p>Projeto sendo desenvolvido em Flutter para permitir ao usuário ouvir, organizar suas músicas salvas no dispositivo movél  em playlists e também pesquisar no Youtube.</p>
 
+## Funcionalidades:
+- Reproduzir músicas internas do dispositivo
+- Criar playlists para melhor organização
+- Ouvir em segundo plano
+- Menu em segundo plano
+- Acesso a músicas do Youtube
+
 ## Tecnologias utilizadas:
 - Flutter
 - SQLite
