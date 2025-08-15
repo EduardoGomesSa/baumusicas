@@ -18,7 +18,7 @@ class MusicRepository {
       ignoreCase: true,
     );
 
-    return songs;
+    return songs.where((song) => (song.duration ?? 0) > 60000).toList();
   }
 
   Future<SongModel> getByPath(String path) async {
