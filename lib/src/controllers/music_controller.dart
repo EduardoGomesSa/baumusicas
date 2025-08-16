@@ -55,9 +55,7 @@ class MusicController extends GetxController {
       await player.setAudioSource(AudioSource.uri(
         Uri.parse(song.uri!),
         tag: MediaItem(
-          // Specify a unique ID for each media item:
           id: song.id.toString(),
-          // Metadata to display in the notification:
           album: song.album,
           title: song.title,
           artUri: Uri.parse(song.uri!),
