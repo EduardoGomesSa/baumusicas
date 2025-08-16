@@ -1,6 +1,7 @@
 import 'package:baumusicas/src/repositories/music_repository.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:just_audio_background/just_audio_background.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class MusicController extends GetxController {
@@ -51,7 +52,17 @@ class MusicController extends GetxController {
       isPaused.value = false;
       currentSong.value = song;
       currentIndex.value = index;
-      await player.setAudioSource(AudioSource.uri(Uri.parse(song.uri!)));
+      await player.setAudioSource(AudioSource.uri(
+        Uri.parse(song.uri!),
+        tag: MediaItem(
+          // Specify a unique ID for each media item:
+          id: song.id.toString(),
+          // Metadata to display in the notification:
+          album: song.album,
+          title: song.title,
+          artUri: Uri.parse(song.uri!),
+        ),
+      ));
       await player.play();
     } catch (e) {
       print("Erro ao reproduzir: $e");
