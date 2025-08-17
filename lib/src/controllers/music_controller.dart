@@ -20,6 +20,25 @@ class MusicController extends GetxController {
     super.onInit();
 
     getMusics();
+
+    player.playingStream.listen((isPlayingNow) {
+      isPlaying.value = isPlayingNow;
+      isPaused.value = !isPlayingNow;
+    });
+
+    player.processingStateStream.listen((state) {
+      if (state == ProcessingState.completed) {
+        isPlaying.value = false;
+        isPaused.value = false;
+      }
+    });
+
+    player.playerStateStream.listen((state) {
+      // Se o player não estiver tocando e estiver no estado idle, reseta tudo
+      if (!state.playing && state.processingState == ProcessingState.idle) {
+        stopMusic();
+      }
+    });
   }
 
   Future<void> getMusics() async {
@@ -52,15 +71,21 @@ class MusicController extends GetxController {
       isPaused.value = false;
       currentSong.value = song;
       currentIndex.value = index;
-      await player.setAudioSource(AudioSource.uri(
-        Uri.parse(song.uri!),
-        tag: MediaItem(
-          id: song.id.toString(),
-          album: song.album,
-          title: song.title,
-          artUri: Uri.parse(song.uri!),
-        ),
-      ));
+      final playlistSource = ConcatenatingAudioSource(
+        children: musics.map((s) {
+          return AudioSource.uri(
+            Uri.parse(s.uri!),
+            tag: MediaItem(
+              id: s.id.toString(),
+              album: s.album,
+              title: s.title,
+              artUri: Uri.parse(s.uri!),
+            ),
+          );
+        }).toList(),
+      );
+
+      await player.setAudioSource(playlistSource, initialIndex: index);
       await player.play();
     } catch (e) {
       print("Erro ao reproduzir: $e");
