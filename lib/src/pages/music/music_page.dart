@@ -1,6 +1,7 @@
 import 'package:baumusicas/src/controllers/music_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:music_visualizer/music_visualizer.dart';
 
 class MusicPage extends StatelessWidget {
@@ -71,6 +72,21 @@ class MusicPage extends StatelessWidget {
                 ),
                 Column(
                   children: [
+                    Obx(() {
+                      final pos = controller.position.value;
+                      final dur = controller.duration.value;
+
+                      return Slider(
+                        min: 0.0,
+                        max: dur.inMilliseconds.toDouble(),
+                        value: pos.inMilliseconds.toDouble(),
+                        onChanged: (value) {},
+                        onChangeEnd: (value) {
+                          controller.player
+                              .seek(Duration(milliseconds: value.toInt()));
+                        },
+                      );
+                    }),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

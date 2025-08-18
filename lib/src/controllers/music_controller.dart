@@ -14,6 +14,8 @@ class MusicController extends GetxController {
   var isPlaying = false.obs;
   var isPaused = false.obs;
   RxInt currentIndex = 0.obs;
+  var position = Duration.zero.obs;
+  var duration = Duration.zero.obs;
 
   @override
   void onInit() {
@@ -37,6 +39,14 @@ class MusicController extends GetxController {
       if (!state.playing && state.processingState == ProcessingState.idle) {
         stopMusic();
       }
+    });
+
+    player.durationStream.listen((dur) {
+      duration.value = dur ?? Duration.zero;
+    });
+
+    player.positionStream.listen((pos) {
+      position.value = pos;
     });
   }
 
