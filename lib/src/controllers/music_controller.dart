@@ -34,7 +34,6 @@ class MusicController extends GetxController {
     });
 
     player.playerStateStream.listen((state) {
-      // Se o player não estiver tocando e estiver no estado idle, reseta tudo
       if (!state.playing && state.processingState == ProcessingState.idle) {
         stopMusic();
       }

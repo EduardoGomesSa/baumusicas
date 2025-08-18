@@ -8,6 +8,7 @@
 - Ouvir em segundo plano
 - Menu em segundo plano
 - Acesso a músicas do Youtube
+- Modo noturno
 
 ## Tecnologias utilizadas:
 - Flutter
