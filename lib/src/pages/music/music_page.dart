@@ -32,6 +32,8 @@ class MusicPage extends StatelessWidget {
           );
         }
 
+        final durationMusic = Duration(milliseconds: song.duration ?? 0);
+
         return Column(
           children: [
             Expanded(
@@ -66,6 +68,24 @@ class MusicPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 10, bottom: 15),
                   child: Text(song.artist ?? "Artista Desconhecido"),
+                ),
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(left: 10),
+                          child: Text("00"),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 10),
+                          child: Text("${(durationMusic.inMinutes)}:"
+                              "${(durationMusic.inSeconds % 60).toString().padLeft(2, '0')}"),
+                        ),
+                      ],
+                    )
+                  ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
