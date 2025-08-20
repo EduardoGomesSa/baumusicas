@@ -1,7 +1,6 @@
 import 'package:baumusicas/src/controllers/music_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:music_visualizer/music_visualizer.dart';
 
 class MusicPage extends StatelessWidget {

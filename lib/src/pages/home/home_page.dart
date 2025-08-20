@@ -51,6 +51,8 @@ class HomePage extends StatelessWidget {
       }),
       bottomNavigationBar: Obx(() {
         final song = controller.currentSong.value;
+        final pos = controller.position.value;
+        final dur = controller.duration.value;
         if (song == null) return const SizedBox.shrink();
 
         return GestureDetector(
@@ -59,24 +61,39 @@ class HomePage extends StatelessWidget {
                 builder: (context) =>
                     MusicPage(index: controller.currentIndex.value)));
           },
-          child: ListTile(
-            title: Text(song.title),
-            subtitle: Text(song.artist ?? ""),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
+          child: SizedBox(
+            width: double.infinity,
+            height: 120,
+            child: Column(
               children: [
-                IconButton(
-                  onPressed: controller.pauseMusic,
-                  icon: Icon(controller.isPlaying.value
-                      ? Icons.pause
-                      : Icons.play_arrow),
+                ListTile(
+                  title: Text(song.title),
+                  subtitle: Text(song.artist ?? ""),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        onPressed: controller.pauseMusic,
+                        icon: Icon(controller.isPlaying.value
+                            ? Icons.pause
+                            : Icons.play_arrow),
+                      ),
+                      controller.isPlaying.value
+                          ? const SizedBox.shrink()
+                          : IconButton(
+                              onPressed: controller.stopMusic,
+                              icon: const Icon(Icons.stop),
+                            )
+                    ],
+                  ),
                 ),
-                controller.isPlaying.value
-                    ? const SizedBox.shrink()
-                    : IconButton(
-                        onPressed: controller.stopMusic,
-                        icon: const Icon(Icons.stop),
-                      )
+                Slider(
+                  min: 0.0,
+                  max: dur.inMilliseconds.toDouble(),
+                  value: pos.inMilliseconds.toDouble(),
+                  onChanged: (value) {},
+                  allowedInteraction: SliderInteraction.slideOnly
+                )
               ],
             ),
           ),
