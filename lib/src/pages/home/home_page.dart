@@ -87,13 +87,19 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Slider(
-                  min: 0.0,
-                  max: dur.inMilliseconds.toDouble(),
-                  value: pos.inMilliseconds.toDouble(),
-                  onChanged: (value) {},
-                  allowedInteraction: SliderInteraction.slideOnly
-                )
+                SliderTheme(
+                  data: SliderThemeData(
+                    thumbShape: SliderComponentShape.noThumb,
+                    trackHeight: 1.0,
+                  ),
+                  child: Slider(
+                    min: 0.0,
+                    max: dur.inMilliseconds.toDouble(),
+                    value: pos.inMilliseconds.toDouble(),
+                    onChanged: (value) {},
+                    allowedInteraction: SliderInteraction.slideOnly,
+                  ),
+                ),
               ],
             ),
           ),
