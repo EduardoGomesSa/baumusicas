@@ -3,11 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:music_visualizer/music_visualizer.dart';
 
-class MusicPage extends StatelessWidget {
+class MusicPage extends StatefulWidget {
   const MusicPage({super.key, required this.index});
 
   final int index;
 
+  @override
+  State<MusicPage> createState() => _MusicPageState();
+}
+
+class _MusicPageState extends State<MusicPage> {
   @override
   Widget build(BuildContext context) {
     final List<Color> colors = [
@@ -26,6 +31,7 @@ class MusicPage extends StatelessWidget {
       body: Obx(() {
         final song = controller.currentSong.value;
 
+        if (!mounted) return const SizedBox.shrink();
         if (song == null) {
           return const Center(
             child: Text("Erro ao carregar música"),
@@ -75,6 +81,7 @@ class MusicPage extends StatelessWidget {
                       final pos = controller.position.value;
                       final dur = controller.duration.value;
 
+                      if (!mounted) return const SizedBox.shrink();
                       return Slider(
                         min: 0.0,
                         max: dur.inMilliseconds.toDouble(),
@@ -91,14 +98,9 @@ class MusicPage extends StatelessWidget {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(left: 10),
-                          child: StreamBuilder(
-                              stream: controller.player.positionStream,
-                              builder: (context, snapshot) {
-                                final position = snapshot.data ?? Duration.zero;
-                                return Text(
-                                  "${position.inMinutes}:${(position.inSeconds % 60).toString().padLeft(2, '0')}",
-                                );
-                              }),
+                          child: Obx(() => Text(
+                              "${controller.position.value.inMinutes}:"
+                              "${(controller.position.value.inSeconds % 60).toString().padLeft(2, '0')}")),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(right: 10),
@@ -120,20 +122,21 @@ class MusicPage extends StatelessWidget {
                           Icons.skip_previous_rounded,
                           size: 50,
                         )),
-                    Obx(
-                      () => IconButton(
+                    Obx(() {
+                      if (!mounted) return const SizedBox.shrink();
+                      return IconButton(
                           onPressed: () {
                             controller.isPlaying.value
                                 ? controller.pauseMusic()
-                                : controller.playMusic(index);
+                                : controller.playMusic(widget.index);
                           },
                           icon: Icon(
                             controller.isPlaying.value
                                 ? Icons.pause
                                 : Icons.play_arrow,
                             size: 50,
-                          )),
-                    ),
+                          ));
+                    }),
                     IconButton(
                         onPressed: () {
                           controller.nextMusic();
@@ -151,5 +154,10 @@ class MusicPage extends StatelessWidget {
         );
       }),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }
