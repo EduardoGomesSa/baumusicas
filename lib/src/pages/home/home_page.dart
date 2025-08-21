@@ -69,6 +69,7 @@ class HomePage extends StatelessWidget {
               child: Column(
                 children: [
                   ListTile(
+                    dense: true,
                     title: Text(song.title),
                     subtitle: Text(song.artist ?? ""),
                     trailing: Row(
