@@ -5,6 +5,7 @@
 ## Funcionalidades:
 - Reproduzir músicas internas do dispositivo
 - Criar playlists para melhor organização
+- Reordernar músicas da playlist
 - Ouvir em segundo plano
 - Menu em segundo plano
 - Acesso a músicas do Youtube
