@@ -5,6 +5,11 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(
+      backgroundColor: Colors.blue,
+      body: Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
   }
 }
