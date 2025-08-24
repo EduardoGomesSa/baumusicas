@@ -1,6 +1,7 @@
 # baumusicas
 ## Sobre:
 <p>Projeto sendo desenvolvido em Flutter para permitir ao usuário ouvir, organizar suas músicas salvas no dispositivo movél  em playlists e também pesquisar no Youtube.</p>
+<p>Outro tópico focado foi a simplicidade e usabilidade, para facilitar seu uso para todos os tipos de usuário</p>
 
 ## Funcionalidades:
 - Reproduzir músicas internas do dispositivo
