@@ -17,6 +17,8 @@
 - Api do Youtube
 - MVC
 - POO
+- on_audio_query
+- just_audio_background
 
 ## Configuração do ambiente:
 
