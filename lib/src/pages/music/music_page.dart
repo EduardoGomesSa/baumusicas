@@ -4,9 +4,10 @@ import 'package:get/get.dart';
 import 'package:music_visualizer/music_visualizer.dart';
 
 class MusicPage extends StatefulWidget {
-  const MusicPage({super.key, required this.index});
+  const MusicPage({super.key, required this.index, required this.homeContext});
 
   final int index;
+  final BuildContext homeContext;
 
   @override
   State<MusicPage> createState() => _MusicPageState();
@@ -116,7 +117,7 @@ class _MusicPageState extends State<MusicPage> {
                   children: [
                     IconButton(
                         onPressed: () {
-                          controller.previousMusic();
+                          controller.previousMusic(widget.homeContext);
                         },
                         icon: const Icon(
                           Icons.skip_previous_rounded,
@@ -128,7 +129,7 @@ class _MusicPageState extends State<MusicPage> {
                           onPressed: () {
                             controller.isPlaying.value
                                 ? controller.pauseMusic()
-                                : controller.playMusic(widget.index);
+                                : controller.playMusic(widget.index, context);
                           },
                           icon: Icon(
                             controller.isPlaying.value
@@ -139,7 +140,7 @@ class _MusicPageState extends State<MusicPage> {
                     }),
                     IconButton(
                         onPressed: () {
-                          controller.nextMusic();
+                          controller.nextMusic(widget.homeContext);
                         },
                         icon: const Icon(
                           Icons.skip_next_rounded,

@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
           if (controller.isLoading.value) {
             return const Center(child: CircularProgressIndicator());
           }
-      
+
           if (controller.musics.isEmpty) {
             return const Center(child: Text("Nenhuma música encontrada."));
           }
@@ -30,9 +30,9 @@ class HomePage extends StatelessWidget {
               final song = controller.musics[index];
               return GestureDetector(
                 onTap: () {
-                  controller.playMusic(index);
+                  controller.playMusic(index, context);
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => MusicPage(index: index)));
+                      builder: (context) => MusicPage(index: index, homeContext: context)));
                 },
                 child: ListTile(
                     title: Text(song.title),
@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
                           onPressed: () => controller.isPlaying.value &&
                                   controller.currentIndex.value == index
                               ? controller.pauseMusic()
-                              : controller.playMusic(index),
+                              : controller.playMusic(index, context),
                         ))),
               );
             },
@@ -56,12 +56,14 @@ class HomePage extends StatelessWidget {
           final pos = controller.position.value;
           final dur = controller.duration.value;
           if (song == null) return const SizedBox.shrink();
-      
+
           return GestureDetector(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) =>
-                      MusicPage(index: controller.currentIndex.value)));
+                  builder: (context) => MusicPage(
+                        index: controller.currentIndex.value,
+                        homeContext: context,
+                      )));
             },
             child: SizedBox(
               width: double.infinity,
