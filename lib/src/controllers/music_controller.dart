@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:baumusicas/src/pages/music/music_page.dart';
 import 'package:baumusicas/src/repositories/music_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -29,10 +29,15 @@ class HomePage extends StatelessWidget {
             itemBuilder: (context, index) {
               final song = controller.musics[index];
               return GestureDetector(
-                onTap: () {
-                  controller.playMusic(index, context);
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => MusicPage(index: index, homeContext: context)));
+                onTap: () async {
+                  await controller.playMusic(index, context);
+                  
+                  if (controller.isPlaying.value &&
+                      controller.currentIndex.value == index) {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            MusicPage(index: index, homeContext: context)));
+                  }
                 },
                 child: ListTile(
                     title: Text(song.title),
@@ -42,10 +47,10 @@ class HomePage extends StatelessWidget {
                                   controller.currentSong.value == song
                               ? Icons.pause
                               : Icons.play_arrow),
-                          onPressed: () => controller.isPlaying.value &&
+                          onPressed: () async => controller.isPlaying.value &&
                                   controller.currentIndex.value == index
                               ? controller.pauseMusic()
-                              : controller.playMusic(index, context),
+                              : await controller.playMusic(index, context),
                         ))),
               );
             },
