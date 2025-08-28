@@ -22,7 +22,11 @@ class HomePage extends StatelessWidget {
           }
 
           if (controller.musics.isEmpty) {
-            return const Center(child: Text("Nenhuma música encontrada."));
+            return const Center(
+                child: Text(
+              "Nenhuma música encontrada.",
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ));
           }
           return ListView.builder(
             itemCount: controller.musics.length,
@@ -31,7 +35,7 @@ class HomePage extends StatelessWidget {
               return GestureDetector(
                 onTap: () async {
                   await controller.playMusic(index, context);
-                  
+
                   if (controller.isPlaying.value &&
                       controller.currentIndex.value == index) {
                     Navigator.of(context).push(MaterialPageRoute(
