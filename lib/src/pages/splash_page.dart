@@ -8,7 +8,12 @@ class SplashPage extends StatelessWidget {
     return const Scaffold(
       backgroundColor: Colors.blue,
       body: Center(
-        child: CircularProgressIndicator(),
+        child: Column(
+          children: [
+            CircularProgressIndicator(),
+            Text("Carregando..."),
+          ],
+        ),
       ),
     );
   }
