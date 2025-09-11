@@ -36,6 +36,8 @@ class HomePage extends StatelessWidget {
                 onTap: () async {
                   await controller.playMusic(index, context);
 
+                  await Future.delayed(const Duration(milliseconds: 300));
+                  
                   if (controller.isPlaying.value &&
                       controller.currentIndex.value == index) {
                     Navigator.of(context).push(MaterialPageRoute(
