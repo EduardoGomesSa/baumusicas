@@ -142,8 +142,9 @@ class MusicController extends GetxController {
   void setupPlayerListener() {
     _playingStreamSubscription = player.playingStream.listen((isPlayingNow) {
       if (!_isUpdating) {
+        var playing = isPlaying.value;
         isPlaying.value = isPlayingNow;
-        isPaused.value = !isPlayingNow;
+        isPaused.value = playing ? !isPlayingNow : isPlayingNow;
         print(
             "Listener atualizado: isPlaying = $isPlayingNow, isPaused = ${!isPlayingNow}");
       }
