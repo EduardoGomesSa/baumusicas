@@ -103,8 +103,6 @@ class MusicController extends GetxController {
       print("Erro ao reproduzir: $e");
     } finally {
       _isUpdating = false;
-      // Navigator.of(context).push(
-      //     MaterialPageRoute(builder: (context) => MusicPage(index: index)));
     }
   }
 

@@ -10,8 +10,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int index = 0;
-
     return SafeArea(
       top: false,
       child: Scaffold(
@@ -33,14 +31,13 @@ class HomePage extends StatelessWidget {
           return ListView.builder(
             itemCount: controller.musics.length,
             itemBuilder: (context, index) {
-              index = index;
               final song = controller.musics[index];
               return GestureDetector(
                 onTap: () async {
                   await controller.playMusic(index, context);
 
                   await Future.delayed(const Duration(milliseconds: 300));
-                  
+
                   if (controller.isPlaying.value &&
                       controller.currentIndex.value == index) {
                     Navigator.of(context).push(MaterialPageRoute(
@@ -92,7 +89,10 @@ class HomePage extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         IconButton(
-                          onPressed: controller.isPlaying.value ? controller.pauseMusic : () => controller.playMusic(index, context),
+                          onPressed: controller.isPlaying.value
+                              ? controller.pauseMusic
+                              : () async => await controller.playMusic(
+                                  controller.currentIndex.value, context),
                           icon: Icon(controller.isPlaying.value
                               ? Icons.pause
                               : Icons.play_arrow),
